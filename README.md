@@ -50,5 +50,5 @@ app.get('/pokemon', (req, res) => {
 
 // Inicia o servidor Express
 app.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Servidor rodando em http://localhost:$3000`);
 });
