@@ -2,7 +2,24 @@
 
 *Thiago Luiz De Souza Santos- 01644540
 
-
+{
+  "name": "pokemonapi",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "sqlite3": "^5.1.6"
+    
+  }
+}
 const express = require('express');
 const https = require('https');
 
