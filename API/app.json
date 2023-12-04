@@ -1,0 +1,45 @@
+#Aluno _
+
+*Thiago Luiz De Souza Santos- 01644540
+
+var  createError  =  require ( 'erros http' ) ;
+var  expresso  =  requer ( 'expresso' ) ;
+var  caminho  =  requer ( 'caminho' ) ;
+var  cookieParser  =  require ( 'parser de cookies' ) ;
+var  logger  =  require ( 'morgan' ) ;
+
+var  indexRouter  =  require ( './routes/index' ) ;
+var  usersRouter  =  require ( './routes/users' ) ;
+
+var  aplicativo  =  express ( ) ;
+
+//visualiza a configuração do mecanismo
+aplicativo . set ( ' visualizações' ,  caminho.join ( __dirname , 'visualizações ' ) ) ; 
+aplicativo . set ( 'mecanismo de visualização' ,  'jade' ) ;
+
+aplicativo . usar ( logger ( 'dev' ) ) ;
+aplicativo . usar ( express.json ( ) ) ; _ _
+aplicativo . use ( express.urlencoded ( { extendido : false } ) ) ; _ _  
+aplicativo . usar ( cookieParser ( ) ) ;
+aplicativo . use ( express . static ( path . join ( __dirname ,  'public' ) ) ) ;
+
+aplicativo . use ( '/' ,  indexRouter ) ;
+aplicativo . use ( '/usuários' ,  usuáriosRouter ) ;
+
+// captura 404 e encaminha para o manipulador de erros
+aplicativo . use ( função ( req ,  res ,  próximo )  {
+  próximo ( criarErro ( 404 ) ) ;
+} ) ;
+
+// manipulador de erros
+aplicativo . use ( função ( err ,  req ,  res ,  próximo )  {
+  // define locais, fornecendo apenas erro no desenvolvimento
+  res . locais . mensagem  =  erro . mensagem ;
+  res . locais . erro  =  req . aplicativo . get ( 'env' )  ===  'desenvolvimento' ? errar : { } ;
+
+  // renderiza a página de erro
+  res . status ( err.status || 500 ) ; _ _  
+  res . renderizar ( 'erro' ) ;
+} ) ;
+
+módulo . exportações  =  aplicativo ;
